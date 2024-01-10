@@ -1,0 +1,60 @@
+.cards__card-wrapper {
+  padding: 7px 0 0 0;
+}
+
+.cards__card {
+  position: relative;
+  display: flex;
+  border-bottom: 1.3px solid #b4b9c5;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cards__name {
+  border: none;
+  border-radius: 4px;
+  margin: 1px 0;
+  padding: 8px;
+  width: 100%;
+  overflow: visible;
+  word-wrap: break-word;
+}
+
+.cards__name--edit {
+  min-height: 100px;
+  min-width: 100%;
+}
+
+.cards__card:hover {
+  background-color: #F4F5F6;
+}
+
+
+.cards__action-icon {
+  visibility: hidden;
+  height: 31px;
+  align-self: flex-start;
+  margin: 2px 2px 0px 0 ;
+  display: flex;
+  font-size: 0.7rem;
+  color: #65738A;
+  display: inline;
+  cursor:crosshair;
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.cards__card:hover .cards__action-icon {
+  visibility: visible;
+}
+
+.cards__action-icon:hover {
+  color: #182A4E;
+  background-color: #e3e3e7;
+}
+
+.cards__edit-btn:hover {
+  cursor: pointer;
+  border-radius: 4px;
+}

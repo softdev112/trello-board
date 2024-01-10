@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 14px;
+  height: 100vh;
+  background: no-repeat url("https://trello-backgrounds.s3.amazonaws.com/SharedBackground/1231x1920/6d63009e449571f87306bdf2b526e3ff/photo-1669183213616-6fcc8a3e2226.jpg") #000;
+  background-size: cover;
+  background-position: 50%;
+  color: #172b4d;
+  font-family: -apple-system, "system-ui";
+}
+
+input,
+textarea,
+button {
+  color: #172b4d;
+  font-size: inherit;
+}
+
+textarea {
+  font-family: inherit;
+  resize: none;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #ffffff00;
+}
+
+/* Handle */
+body::-webkit-scrollbar-thumb {
+  background: #88888888;
+  border-radius: 20px;
+}
+
+
