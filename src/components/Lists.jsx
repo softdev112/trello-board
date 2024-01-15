@@ -15,7 +15,7 @@ const Lists = (props) => {
         const getLists = async () => {
             try {
                 const resp = await listsAPI.getLists();
-                context.setLists([...context.lists, ...resp]);
+                context.setLists([...resp]);
             } catch (error) {
                 console.log("Unable to retrieve lists");
             }
@@ -23,7 +23,7 @@ const Lists = (props) => {
         const getCards = async () => {
             try {
                 const resp = await cardsAPI.getCards();
-                context.setCards([...context.cards, ...resp]);
+                context.setCards([...resp]);
             } catch (error) {
                 console.log("Unable to retrieve cards");
             }
@@ -31,7 +31,7 @@ const Lists = (props) => {
         getLists();
         getCards();
         
-    }, [context]);
+    }, []);
 
     return (
         <>
