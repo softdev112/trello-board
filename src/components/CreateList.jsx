@@ -12,7 +12,7 @@ const CreateList = (props) => {
     useEffect(() => {
         if (toggleAddList)
             setToggleAddList(!toggleAddList);
-    }, [toggleAddList]);
+    }, []);
 
     const postNewList = async () => {
         if (!listName)

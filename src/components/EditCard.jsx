@@ -12,16 +12,23 @@ const EditCard = (props) => {
   // card title change function
   const updateCard = async () => {
     try {
-      // request
+      const cards = context.cards.filter(card => card.id === props.id);
+      if (cards.length === 0 ) {
+          return;
+      }
+      const lists = context.lists.filter(list => list.id === props.idList);
+      if (lists.length === 0 ) {
+          return;
+      }
       const resp = await cardsAPI.updateCard(
         {        
-          "id": props.card.id,
+          "id": cards[0].id,
           "name": textarea.current.value,
-          "body": props.card.description,
+          "body": cards[0].description,
           "groupDto": {
-            "id": props.list.id,
-            "name": props.list.name,
-            "description": props.list.description
+            "id": lists[0].id,
+            "name": lists[0].id.name,
+            "description": lists[0].id.description
           }
         }
       );
@@ -40,32 +47,41 @@ const EditCard = (props) => {
 
   // card delete function
   const deleteCard = async () => {
-    try {
-      // request
-      const resp = await cardsAPI.deleteCard(
-        {
-          "id": props.card.id,
-          "name": props.card.name,
-          "body": props.card.description,
-          "groupDto": {
-            "id": props.list.id,
-            "name": props.list.name,
-            "description": props.list.description
-          }
+    const confirmation = window.confirm("This action will delete this card. Are you sure?");
+    if (confirmation) {
+      try {
+        const cards = context.cards.filter(card => card.id === props.id);
+        if (cards.length === 0 ) {
+            return;
         }
-      );
-      if (resp.status === 200) {
-        // copy listCards and remove deleted card
-        const newListCards = context.cards.filter(
-          (card) => card.id !== props.id
+        const lists = context.lists.filter(list => list.id === props.idList);
+        if (lists.length === 0 ) {
+            return;
+        }
+        const resp = await cardsAPI.deleteCard(
+          {
+            "id": cards[0].id,
+            "name": cards[0].name,
+            "body": cards[0].description,
+            "groupDto": {
+              "id": lists[0].id,
+              "name": lists[0].id.name,
+              "description": lists[0].id.description
+            }
+          }
         );
-        // update cards in List component
-        context.setCards(newListCards);
+          // copy listCards and remove deleted card
+          const newListCards = context.cards.filter(
+            (card) => card.id !== props.id
+          );
+          // update cards in List component
+          context.setCards(newListCards);
+      } catch (error) {
+        console.log(error.message);
+        alert("Unable to delete card");
       }
-    } catch (error) {
-      console.log(error.message);
-      alert("Unable to delete card");
-    }
+      }            
+
   };
 
   const handleKeyPress = (e) => {
@@ -122,15 +138,12 @@ const EditCard = (props) => {
             </button>
             {moveCard && (
               <MoveCard
-                card={props.card}
-                idList={props.card.groupDto.id}
+                id={props.id}
+                idList={props.idList}
                 setMoveCard={setMoveCard}
                 setCardEdit={props.setCardEdit}
                 idBoard={props.idBoard}/>
             )}
-            <button className="cards__edit-action-btn">
-              <i className="fa-solid fa-trash"></i> Archive
-            </button>
           </div>
         </div>
       </div>

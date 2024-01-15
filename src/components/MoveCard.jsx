@@ -15,15 +15,19 @@ const MoveCard = (props) => {
   const handleSubmit = async () => {
     try {
       // request
+      const cards = context.cards.filter(card => card.id === props.id);
+      if (cards.length === 0 ) {
+          return;
+      }
       const list = context.lists.filter(list => list.id === targetListId);
       if (list.length === 0) {
         return;
       }
       const resp = await cardsAPI.updateCard(
         {
-          'id': props.card.id,
-          'name': props.card.name,
-          'body': props.card.body,
+          'id': cards[0].id,
+          'name': cards[0].name,
+          'body': cards[0].body,
           'groupDto': {
             'id': list[0].id,
             'name': list[0].name,
