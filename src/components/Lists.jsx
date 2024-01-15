@@ -31,7 +31,7 @@ const Lists = (props) => {
         getLists();
         getCards();
         
-    }, [context]);
+    }, []);
 
     return (
         <>

@@ -46,7 +46,7 @@ const AsideCard = (props) => {
                     <span className=" card__aside__options--title" >Move</span>
                 </div>
                 {moveCard &&
-                    <MoveCard card={props.payload} 
+                    <MoveCard id={props.payload.id} 
                         setMoveCard={setMoveCard} 
                         setCardEdit={setMoveCard} 
                         idList={props.payload.groupDto.id} 

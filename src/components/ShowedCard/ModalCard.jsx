@@ -4,11 +4,6 @@ import { useState, useEffect } from 'react'
 import "../../assets/css/Card/ModalCard.css";
 
 const ModalCard = (props) => {
-    const [comments, setComments] = useState([])
-    const [checkList, setCheckList] = useState([])
-    useEffect(() => {
-    }, [])
-
 
     return (
         <>
@@ -43,16 +38,10 @@ const ModalCard = (props) => {
                         <div className="card__body">
                             <BodyCard 
                                 payload={props.currentCard} 
-                                comments={comments} 
-                                checkList={checkList}
-                                setComments={setComments} 
-                                setCheckList={setCheckList}
                                 setCurrentCard={props.setCurrentCard} />
                         </div>
                         <div className="card__aside">
                             <AsideCard payload={props.currentCard} 
-                                setCheckList={setCheckList} 
-                                checkList={checkList} 
                                 setCurrentCard={props.setCurrentCard}
                                />
                         </div>

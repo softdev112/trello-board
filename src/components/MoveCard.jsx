@@ -17,7 +17,7 @@ const MoveCard = (props) => {
       // request
       const cards = context.cards.filter(card => card.id === props.id);
       if (cards.length === 0 ) {
-          return;
+        return;
       }
       const list = context.lists.filter(list => list.id === targetListId);
       if (list.length === 0) {
